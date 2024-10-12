@@ -58,6 +58,14 @@
                 console.log("Playback failed", error)
             })
         })
+        function playOpeningSound() {
+            var audio = document.getElementById("yellow");
+            audio.play().catch(error => {
+                console.log("Load Playback failed: ", error)
+            }
+            )
+        }
+        window.addEventListener("load", playOpeningSound);
     </script>
 </body>
 </html>
