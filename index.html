@@ -13,7 +13,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: aliceblue;
+            background-color: white;
             cursor: url("assets/leosface.png") 2 2, auto;
         }
         h1{
@@ -23,9 +23,9 @@
         button{
             font-family: Arial, Helvetica, sans-serif;
             border: 0cap;
-            width: 80px;
-            height: 80px;
-            background-color: aliceblue;
+            width: 60px;
+            height: 60px;
+            background-color: white;
             margin-bottom: 1rem;
             cursor: url("assets/leosface.png") 2 2, auto;
 
@@ -44,17 +44,27 @@
     </style>
 </head>
 <body>
-    <!-- <h1>YEEEELLOW!</h1> -->
-    <button id="yellowbutton"> <img src="assets/image.png" alt=""></button>
-    <img src="assets/animated-gif.gif" alt="">
+    <!-- <img src="assets/animated-gif.gif" alt=""> -->
+    <img src="assets/Untitled.png" alt="">
+    <button id="yellowbutton"> <img src="assets/play-button-svgrepo-com.svg" alt=""></button>
     <audio id="yellow">
         <source src="assets/Yellow.mp4" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <script>
+    <script type="module">
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+        function throwConfetti() {
+            confetti({
+                particleCount: 1000,
+                spread: 100,
+                origin: {y: 0.4}
+            });
+        }
+        window.addEventListener("load", throwConfetti);
         document.getElementById("yellowbutton").addEventListener("click", function(){
             const sound = document.getElementById("yellow");
             sound.play().then(() => {
+                throwConfetti()
                 console.log("Audio playing")
             }).catch((error) => {
                 console.log("Playback failed", error)
@@ -68,17 +78,6 @@
             )
         }
         window.addEventListener("load", playOpeningSound);
-    </script>
-    <script type="module">
-        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
-        function throwConfetti() {
-            confetti({
-                particleCount: 1000,
-                spread: 100,
-                origin: {y: 0.4}
-            });
-        }
-        window.addEventListener("load", throwConfetti);
     </script>
 </body>
 </html>
